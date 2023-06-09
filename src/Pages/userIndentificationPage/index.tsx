@@ -1,6 +1,6 @@
 //componente responsável pela página de identificação do usuário
 import React, { useCallback, useState, useEffect } from 'react'
-import { KeyboardAvoidingView } from 'react-native'
+import { KeyboardAvoidingView, StyleSheet, View } from 'react-native'
 import * as S from "./style"
 import { ButtonComponent } from '../../components/Button'
 export default function UserIndentifyComponent() {
@@ -13,20 +13,21 @@ export default function UserIndentifyComponent() {
     }, [input])
 
     useEffect(() => {
-        console.log(userName, 'click')
+        console.log(userName)
     }, [userName])
     return (
         <KeyboardAvoidingView behavior='padding'>
             <S.Container>
-                <S.Emoji>
-                    😄
-                </S.Emoji>
-                <S.ContainerTitle>
-                    Como podemos {'\n'}chamar você?
-                </S.ContainerTitle>
+                <View style={{ height: '35%', marginTop: '6%' }}>
+                    <S.Emoji>
+                        😄
+                    </S.Emoji>
+                    <S.ContainerTitle>
+                        Como podemos {'\n'}chamar você?
+                    </S.ContainerTitle>
+                </View>
                 <S.ContainerInput
                     placeholder='Digite seu nome aqui...'
-                    autoFocus={true}
                     onChangeText={setInput}
                     value={input}
                 />

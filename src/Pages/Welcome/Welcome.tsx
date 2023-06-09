@@ -1,12 +1,13 @@
 import React from 'react'
 import * as S from "./style"
 import wateringimg from "../../assets/watering.png"
-import { ButtonComponent } from '../../components/Button'
 import { Feather } from "@expo/vector-icons"
-import { StyleSheet } from 'react-native'
-import fonts from '../../styles/fonts'
 
-export default function WelcomeContainer() {
+/* interface Props {
+    navigation: any,
+    navigate: any
+} */
+export default function WelcomeContainer({ navigation }) {
     return (
         <S.Container>
             <S.TextTitle>
@@ -17,7 +18,7 @@ export default function WelcomeContainer() {
                 Não se esqueça de regar suas plantas.
                 Nós cuidamos de lembrar você sempre que precisar.
             </S.TextParagraph>
-            <S.Button activeOpacity={0.7}>
+            <S.Button activeOpacity={0.7} onPress={() => navigation.navigate('userIndetification')}>
                 <S.ButtonText>
                     <Feather name={'chevron-right'} style={{ fontSize: 32, color: 'white' }} />
                 </S.ButtonText>
