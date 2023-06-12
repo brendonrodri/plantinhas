@@ -19,7 +19,7 @@ export const ContainerInput = styled.TextInput`
     border-bottom-width: 1px;
     border-color: #5C6660;
     color: #52665A;
-    width: 75%;
+    width: 70%;
     font-size: 18px;
     text-align: center;
     margin-top: 50px; 

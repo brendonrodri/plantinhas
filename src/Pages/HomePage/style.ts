@@ -3,7 +3,7 @@ import fonts from "../../styles/fonts"
 
 export const TextContainer = styled.View`
     padding: 0 25px;
-    margin-top: 25px    ;
+    margin-top: 10px    ;
 `
 export const StrongText = styled.Text`
     font-family: ${fonts.heading};
