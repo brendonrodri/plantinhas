@@ -5,7 +5,7 @@ declare module '*.png' {
 
 //tem como função resolver o erro de import da imagem no TS
 
-declare module "style.ts" {
+declare module '*.jpg' {
     const content: any;
     export default content;
 }
