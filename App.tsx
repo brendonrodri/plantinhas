@@ -1,6 +1,7 @@
 import React from 'react'
 import { useFonts, Jost_400Regular, Jost_600SemiBold } from "@expo-google-fonts/jost" //importa as fontes diretamente do google usando a api de fonts do próprio expo
 import Routes from './src/routes'
+import ContextApi from './src/services/context'
 export default function App() {
   const [fonts] = useFonts({
     Jost_400Regular, Jost_600SemiBold
@@ -9,8 +10,8 @@ export default function App() {
     return
   }
   return (
-    <>
+    <ContextApi>
       <Routes />
-    </>
+    </ContextApi>
   )
 }

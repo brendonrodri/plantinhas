@@ -1,16 +1,17 @@
 //componente responsável pela página de identificação do usuário
-import React, { useCallback, useState, useEffect } from 'react'
+import React, { useCallback, useState, useEffect, useContext } from 'react'
 import { useNavigation } from '@react-navigation/core'//importa o useNavigation para importar as rotas
 import { KeyboardAvoidingView, View, TouchableWithoutFeedback } from 'react-native'
 import * as S from "./style"
 import { ButtonComponent } from '../../components/Button'
 import { Keyboard } from 'react-native'
+import { Contexto } from '../../services/context'
 export default function UserIndentifyComponent() {
     const [input, setInput] = useState('')
-    const [userName, setUserName] = useState('')
+    /* const [userName, setUserName] = useState('') */
     const [isFocuos, setIsFocuos] = useState(false)
     const [isBlur, setIsBlur] = useState(false)
-
+    const { userName, setUserName } = useContext(Contexto)
     const handleBlur = () => {
         setIsBlur(false)
     }
@@ -26,11 +27,9 @@ export default function UserIndentifyComponent() {
     }, [input])
     //função de trocar de rota, possui uma condição que não deixa a rota ser trocada se o input estiver vazio
     const handleRoute = () => {
-        if (!input) {
-            return
-        } else {
-            navigation.navigate('confirmation') //muda o endereço da rota
-        }
+
+        navigation.navigate('confirmation') //muda o endereço da rota
+
     }
     return (
         <KeyboardAvoidingView behavior='padding'>

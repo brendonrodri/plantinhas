@@ -1,11 +1,13 @@
 //componente responsável pela página de identificação do usuário
-import React from 'react'
+import React, { useContext } from 'react'
 import { KeyboardAvoidingView, View } from 'react-native'
 import * as S from "./style"
 import { ButtonComponent } from '../../components/Button'
 import { useNavigation } from '@react-navigation/native'
+import { Contexto } from '../../services/context'
 export default function ConfirmationComponent() {
     const navigation = useNavigation<any>()
+    const { userName } = useContext(Contexto)
     return (
         <KeyboardAvoidingView behavior='padding'>
             <S.Container>
@@ -14,7 +16,7 @@ export default function ConfirmationComponent() {
                         😄
                     </S.Emoji>
                     <S.ContainerTitle>
-                        Prontinho
+                        Prontinho, {userName}
                     </S.ContainerTitle>
                     <S.ContainerSubTitle>
                         Agora vamos começar a cuidar das suas plantinhas com muito cuidado

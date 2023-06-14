@@ -1,30 +1,22 @@
-import React from "react"
-import { StyleSheet, Text } from "react-native"
+import React from "react";
+import { StyleSheet, TouchableOpacityProps } from "react-native";
+import fonts from "../../styles/fonts";
 import * as S from "./style"
-import fonts from "../../styles/fonts"
-//define uma tipagem para o botão, onde uma recebe o título do botão e a outra uma props para verificar se o botão está ativo ou não
-interface EnviromentButtonProps {
-    title: string,
-    active?: boolean
+interface EnviromentButtonProps extends TouchableOpacityProps {
+    title: string;
+    active?: boolean;
 }
-export default function EnviromentButton({
-    title,
-    active = false,
-    ...rest
-}: EnviromentButtonProps) {
+const EnviromentButton = ({ title, active = false, ...rest }: EnviromentButtonProps) => {
     return (
-        <S.ButtonList style={active && styles.activeButton}> {/* se estiver ativo, vai renderizar outro estilo junto */}
-            <Text style={active && styles.activeButtonText}>
-                {title} {/* titulo do botão, adicionado via props */}
-            </Text>
+        <S.ButtonList style={active && styles.activeButton} {...rest}>
+            <S.ButtonText style={active && styles.activeButton}>{title}</S.ButtonText>
         </S.ButtonList>
-    )
-}
+    );
+};
+export default EnviromentButton;
 const styles = StyleSheet.create({
     activeButton: {
-        backgroundColor: '#DAF2E4'
-    },
-    activeButtonText: {
+        backgroundColor: '#DAF2E4',
         color: '#2B7A4B',
         fontFamily: fonts.heading
     }

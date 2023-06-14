@@ -5,7 +5,7 @@ import server from '../../services/server.json'
 //define a tipagem do state que vai receber a api
 interface EnviromentProps {
     key: string,
-    title: string
+    title: string,
 }
 //atribui a mesma tipagem do state ao conteúdo do json
 interface ServerData {
@@ -13,9 +13,12 @@ interface ServerData {
 }
 export default function AmbientsList() {
     const [data, setData] = useState<EnviromentProps[]>([])
+    const [environmentActive, setEnvironmentActive] = useState('all')
     //função que recebe os dados da array, nesse caso a função recebe como parâmetro item que está sendo tipado de acordo com a ListData, para assim todo os dados terem a mesma tipagem definida previamente
     const renderItem = ({ item }: { item: EnviromentProps }) => (
-        <EnviromentButton title={item.title} active />
+        <EnviromentButton title={item.title} active={item.key === environmentActive} onPress={() => {
+            setEnvironmentActive(item.key)
+        }} />
     )
     useEffect(() => {
         async function getData() {
@@ -40,8 +43,5 @@ const styles = StyleSheet.create({
     listStyle: {
         margin: 20,
         height: 70,
-    },
-    activeButton: {
-        color: 'red'
     }
 })

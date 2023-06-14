@@ -4,7 +4,6 @@ import HeaderComponent from '../../components/Header'
 import AmbientsList from '../../components/AmbientList'
 import PlantList from '../../components/PlantList'
 export default function HomePageComponent() {
-
     return (
         <>
             <HeaderComponent />
