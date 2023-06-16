@@ -1,7 +1,7 @@
 //componente responsável pela página de identificação do usuário
 import React, { useCallback, useState, useEffect, useContext } from 'react'
 import { useNavigation } from '@react-navigation/core'//importa o useNavigation para importar as rotas
-import { KeyboardAvoidingView, View, TouchableWithoutFeedback } from 'react-native'
+import { KeyboardAvoidingView, View, TouchableWithoutFeedback, Alert } from 'react-native'
 import * as S from "./style"
 import { ButtonComponent } from '../../components/Button'
 import { Keyboard } from 'react-native'
@@ -12,6 +12,9 @@ export default function UserIndentifyComponent() {
     const [isFocuos, setIsFocuos] = useState(false)
     const [isBlur, setIsBlur] = useState(false)
     const { userName, setUserName } = useContext(Contexto)
+    const setName = useCallback(() => { //useEffect adicionado para resolver o erro da função só ser chamado 
+        setUserName(input)
+    }, [input])
     const handleBlur = () => {
         setIsBlur(false)
     }
@@ -22,14 +25,14 @@ export default function UserIndentifyComponent() {
     const navigation = useNavigation<any>(); //usa o hook para guardar a função navigate em um const, o que permite chamar a mesma no return
     //useEffect adicionado para resolver o erro da função só ser chamado ao primeiro click.
     //O hook carega a função que seta o state userName e tem como dependência o o state input, onde é armazenado a entrada do usuário.
-    const setName = useCallback(() => { //useEffect adicionado para resolver o erro da função só ser chamado 
-        setUserName(input)
-    }, [input])
+
     //função de trocar de rota, possui uma condição que não deixa a rota ser trocada se o input estiver vazio
     const handleRoute = () => {
-
-        navigation.navigate('confirmation') //muda o endereço da rota
-
+        if (!input) {
+            return Alert.alert('Por favor, nos informe seu nome')
+        } else {
+            navigation.navigate('confirmation') //muda o endereço da rota
+        }
     }
     return (
         <KeyboardAvoidingView behavior='padding'>
