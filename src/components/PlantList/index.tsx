@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import { FlatList } from "react-native"
 import server from "../../services/server.json"
 import PlantCardPrimary from "../PlantCardPrimary"
+import { Contexto } from "../../services/context"
 //define a tipagem do o state onde será guardado os valores vindos do json
 interface PlantsProps {
     id: string,
@@ -20,7 +21,7 @@ interface PlantsDataProps {
     plants: PlantsProps[]
 }
 export default function PlantList() {
-    const [plants, setPlants] = useState<PlantsProps[]>([])
+    const { plants, setPlants, filteredPlants } = React.useContext(Contexto)
     const jsonData = JSON.stringify(server) as string; //converse o json para string
     const paserdData = JSON.parse(jsonData) as PlantsDataProps; //converte e atribui uma tipagem aos dados
     const ItemRender = ({ item }: { item: PlantsProps }) => (
@@ -32,13 +33,12 @@ export default function PlantList() {
     }, [])
     return (
         <FlatList
-            data={plants}
+            data={filteredPlants}
             keyExtractor={item => item.id}
             renderItem={ItemRender}
             showsVerticalScrollIndicator={false}
             numColumns={2}
             style={{ marginBottom: 20 }}
         />
-
     )
 }

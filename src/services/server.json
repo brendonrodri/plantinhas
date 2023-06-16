@@ -11,6 +11,10 @@
   ],
   "plants_environments": [
     {
+      "key": "all",
+      "title": "Todos"
+    },
+    {
       "key": "living_room",
       "title": "Sala"
     },
@@ -25,14 +29,6 @@
     {
       "key": "bathroom",
       "title": "Banheiro"
-    },
-    {
-      "key": "sacada",
-      "title": "Sacada"
-    },
-    {
-      "key": "quintal",
-      "title": "Quintal"
     }
   ],
   "plants": [

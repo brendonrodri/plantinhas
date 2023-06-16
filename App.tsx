@@ -9,6 +9,7 @@ export default function App() {
   if (!fonts) {
     return
   }
+
   return (
     <ContextApi>
       <Routes />
