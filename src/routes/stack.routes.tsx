@@ -4,6 +4,7 @@ import WelcomeContainer from '../Pages/Welcome/Welcome'
 import UserIndentifyComponent from '../Pages/userIndentificationPage'
 import ConfirmationComponent from '../Pages/ConfirmationPage'
 import HomePageComponent from '../Pages/HomePage'
+import PlantSaveComponent from '../Pages/PlantSave'
 export const stackRoutes = createNativeStackNavigator() //cria o provedor das rotas
 //componente responsável por criar as rotas. stackRoutes.Navigator o componente que encapsula as rotas.
 //navitagor possui o screenOptions que carrega nele o headerShown com o valor false.
@@ -16,6 +17,7 @@ const AppRoutes: React.FC = () => {
             <stackRoutes.Screen name='userIndetification' component={UserIndentifyComponent} />
             <stackRoutes.Screen name="confirmation" component={ConfirmationComponent} />
             <stackRoutes.Screen name="homepage" component={HomePageComponent} />
+            <stackRoutes.Screen name="plantsave" component={PlantSaveComponent} />
         </stackRoutes.Navigator>
     )
 }

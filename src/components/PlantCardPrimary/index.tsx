@@ -1,8 +1,9 @@
 import React from 'react'
 import { SvgFromUri } from "react-native-svg" //biblioteca para o uso das SVGS
+import { TouchableOpacityProps } from 'react-native'
 import * as S from "./style"
 //define a tipagem do botão
-interface PropsPlant {
+interface PropsPlant extends TouchableOpacityProps {
     data: {
         name: string;
         photo: string;

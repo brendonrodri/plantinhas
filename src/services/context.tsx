@@ -1,4 +1,5 @@
-import React, { useState, useCallback, createContext } from 'react'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import React, { useState, createContext, useEffect } from 'react'
 
 interface PlantsProps {
     id: string,
@@ -20,7 +21,8 @@ export const Contexto = createContext<any>(undefined)
 export default function ContextApi({ children }: any) {
     const [plants, setPlants] = useState<PlantsDataProps>()
     const [filteredPlants, setFilteredPlants] = useState<PlantsDataProps>()
-    const [userName, setUserName] = useState<string>()
+    const [userName, setUserName] = useState<any>(AsyncStorage.getItem('@planinhas:name') || '')
+    useEffect(() => console.log(userName), [userName])
     return (
         <Contexto.Provider value={{
             plants,
